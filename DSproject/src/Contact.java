@@ -1,15 +1,15 @@
 package dataStructure;
 
-public class Contact <T> { 
-	 public T ContactName; 
-	 public T phoneNumber; 
-	 public T emailAddress; 
-	 public T address; 
-	 public T birthday; 
-	 public T notes; 
+public class Contact { 
+	 public String ContactName; 
+	 public String phoneNumber; 
+	 public String emailAddress; 
+	 public String address; 
+	 public String birthday; 
+	 public String notes; 
 	 
 	 
-	    public Contact(T ContactName, T phoneNumber, T emailAddress, T address, T birthday, T notes) { 
+	    public Contact(String ContactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) { 
 	        this.ContactName = ContactName; 
 	        this.phoneNumber = phoneNumber; 
 	        this.emailAddress = emailAddress; 
@@ -19,62 +19,57 @@ public class Contact <T> {
 	        
 	    } 
 	   
-	    public T getContactName() { 
+	    public String getContactName() { 
 	        return ContactName ; 
 	    } 
 	 
-	    public void setContactName(T name) { 
+	    public void setContactName(String name) { 
 	        ContactName = name; 
 	    } 
 	 
-	    public T getPhoneNumber() { 
+	    public String getPhoneNumber() { 
 	        return phoneNumber; 
 	    } 
 	 
-	    public void setPhoneNumber(T phoneNumber) { 
+	    public void setPhoneNumber(String phoneNumber) { 
 	        this.phoneNumber = phoneNumber; 
 	    } 
 	 
-	    public T getEmailAddress() { 
+	    public String getEmailAddress() { 
 	        return emailAddress; 
 	    } 
 	 
-	    public void setEmailAddress(T emailAddress) { 
+	    public void setEmailAddress(String emailAddress) { 
 	        this.emailAddress = emailAddress; 
 	    } 
 	 
-	    public T getAddress() { 
+	    public String getAddress() { 
 	        return address; 
 	    } 
 	 
-	    public void setAddress(T address) { 
+	    public void setAddress(String address) { 
 	        this.address = address; 
 	    } 
 	 
-	    public T getBirthday() { 
+	    public String getBirthday() { 
 	        return birthday; 
 	    } 
 	 
-	    public void setBirthday(T birthday) { 
+	    public void setBirthday(String birthday) { 
 	        this.birthday = birthday; 
 	    } 
 	 
-	    public T getNotes() { 
+	    public String getNotes() { 
 	        return notes; 
 	    } 
 	 
-	    public void setNotes(T notes) { 
+	    public void setNotes(String notes) { 
 	        this.notes = notes; 
 	    } 
 	     
 	     
      
      
-     
-  
-  
-  
-  
      
      
      
