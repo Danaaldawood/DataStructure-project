@@ -1,9 +1,11 @@
-package dataStructure;
+package phonebook;
 
-public class Node <T> {
-	
-	public T data; 
-	public Node <T> next;
+
+
+
+public class Node <T>{
+    public T data; 
+    public Node <T> next;
 	
 	
 	public Node (T d) {
@@ -33,7 +35,7 @@ public class Node <T> {
 	}
 	
 	
-	
 
 }
+
 
