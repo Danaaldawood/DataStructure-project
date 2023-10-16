@@ -1,8 +1,8 @@
-package dataStructure;
+package phonebook;
 
-public class LinkedList <T>{ 
-    
-	  private Node<T> Head; 
+
+public class LinkedList <T> {
+          private Node<T> Head; 
 	  private Node<T> current; 
 	   
 	  public LinkedList(){ 
@@ -28,14 +28,14 @@ public class LinkedList <T>{
 	      current.data = d; 
 	  } 
 	  
-	    public T Retrive(){ 
+	  public T Retrive(){ 
 	        return current.data; 
 	    } 
 	 
-	    public void Insert(T d) {
+	  public void Insert(T d) {
 	    
 	    	Node<T> tmp;
-	    	if (Empty()) {
+	    	if (Head==null) {
 	    		current = Head = new Node<T> (d);
 	    	}
 	    	else {
@@ -46,7 +46,7 @@ public class LinkedList <T>{
 	    	}
 	    }
 	    
-	    	public void Remove () {
+	   public void Remove () {
 	    		
 	    		if (current == Head) {
 	    			Head = Head.next;
@@ -62,7 +62,54 @@ public class LinkedList <T>{
 	    		else
 	    			current = current.next;
 	    	}
-	    
-	    
-	         
-	    }
+	      
+           public void AddSortContact(T x){
+               Node<T> p=new Node<T>(x);
+             if(Head==null){
+                 Head=p;
+                 return;}
+             
+             if(((Contact)x).CompareTo(((Contact)Head.data).ContactName)<0){
+                 p.next=Head;
+                 Head=p;
+                 return;}
+             
+             Node<T> temp=Head;
+             Node<T> pre=null;
+             while(temp!=null){
+                 if(((Contact)temp.data).CompareTo(((Contact)x).ContactName)<=0)
+                     pre=temp;  temp=temp.next;
+                        
+             }
+             pre.next=p;
+             p.next=temp;  
+               
+           }
+           
+           
+          public void AddSortEvent(T x){
+               Node<T> p=new Node<T>(x);
+             if(Head==null){
+                 Head=p;
+                 return;}
+             
+             if(((Event)x).CompareTo(((Event)Head.data).Title)<0){
+                 p.next=Head;
+                 Head=p;
+                 return;}
+             
+             Node<T> temp=Head;
+             Node<T> pre=null;
+             while(temp!=null){
+                 if(((Event)temp.data).CompareTo(((Event)x).Title)<=0)
+                     pre=temp;  temp=temp.next;
+                        
+             }
+             pre.next=p;
+             p.next=temp;  
+               
+           } 
+           
+             
+}    
+            
