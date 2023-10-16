@@ -99,7 +99,7 @@ public static LinkedList<Event> Elist;
                       str=read.nextLine();
                       l= ph.SearchEmail(str);
                       if(l.Empty())
-                          System.out.println("there are no contacts matching with this email!");
+                          System.out.println("there is no contacts matching with this email!");
                       else{
                           l.FindFirst();
                           while(!l.Last()){
@@ -118,7 +118,7 @@ public static LinkedList<Event> Elist;
                        str=read.nextLine();
                        l= ph.SearchAddress(str);
                       if(l.Empty())
-                          System.out.println("there are no contacts matching with this address!");
+                          System.out.println("there is no contacts matching with this address!");
                       else{
                           l.FindFirst();
                           while(!l.Last()){
@@ -155,11 +155,23 @@ public static LinkedList<Event> Elist;
            
            break;
            
-           //case 3:
-               //System.out.println("enter contact name you want to delete:");
-               //read.nextLine();
-              // str=read.nextLine();
-               
+           case 3:
+               System.out.println("enter contact name you want to delete:");
+               read.nextLine();
+               str=read.nextLine();
+               contact=ph.SearchName(str);
+               if(contact!=null){
+                   ph.DeleteContact(contact);
+               }
+              break;
+              
+              
+              
+              
+              
+              
+              
+              
            case 4:
                System.out.print("Enter event title:");
                read.nextLine();
@@ -181,8 +193,9 @@ public static LinkedList<Event> Elist;
                      }
                      else{
                        Event event=new Event(title,date,time,loc,contact);  
-                       Elist.AddSortEvent(event);
-                      if( contact.addEvent(event))
+                       ph.Elist.AddSortEvent(event);
+
+                      if( contact.addEvent(Elist.Retrive()))
                           System.out.println("Event scheduled successfully!");
                       else
                            System.out.println("Event scheduled Unsuccessfully!");
@@ -201,43 +214,70 @@ public static LinkedList<Event> Elist;
                switch(i)
                {
                    case 1:
-                     System.out.println("enter contact name:");
+                     System.out.print("enter contact name:");
                      read.nextLine();
                      str=read.nextLine();
-                     ph.PrintByContactName(str);
-                   
+                     contact=ph.SearchName(str);
+                     if(contact==null)
+                         System.out.println("contact name not found!");
+                    else{
+                         LinkedList<Event> eventlist=contact.getEvent();
+                         if(eventlist.Empty())
+                            System.out.println("The contact does not have any event!");
+                         else{
+                            eventlist.FindFirst();
+                            while(!eventlist.Last()){
+                                System.out.println(eventlist.Retrive());
+                                eventlist.FindNext();}
+                            System.out.println(eventlist.Retrive());
+            
+                            }
+         
+                     } 
+         
+                    break;
+                    
+                   case 2:
+                     System.out.print("Enter the event title:");
+                     read.nextLine();
+                     str=read.nextLine();
+                     LinkedList<Event> eventlist=ph.SearchByEventTitle(str);
+                      if(eventlist.Empty())
+                          System.out.println("there is no event with this title!");
+                      else{
+                          System.out.println("Event Found!");
+                          eventlist.FindFirst();
+                          while(!eventlist.Last()){
+                              System.out.println(eventlist.Retrive());
+                              eventlist.FindNext();
+                          }
+                          System.out.println(eventlist.Retrive());
+                          
+                          
+                      }
+                      break;
                    
                }                         
-                    
-                     
-                     
+               break;     
+           
+           case 6:
                
-               
-           
-           
-           
-       
-       
-       
-       
-       
-       
-       
-       
-       
-           
-           
-           
-           
-           
-           
-           
-           
+              System.out.print("Enter the first name: ");       
+              read.nextLine();
+              str=read.nextLine();
+              ph.PrintFirstName(str);
+              break;
+              
+           case 7:
+              ph.PrintInOrder();
+              break;
+      
        }//end switch   
      }while(ch!=8);
         
         
-        
+   
+     System.out.println("Goodbye!");  
         
         
         
@@ -382,8 +422,7 @@ list.FindNext();
   public void PrintFirstName(String name){
       LinkedList<Contact> l=new LinkedList<Contact>();
       if(!list.Empty()){
-         
-      
+
        list.FindFirst();
      while(!list.Last()){
          
@@ -407,39 +446,28 @@ list.FindNext();
          System.out.println(l.Retrive().toString());
       }       
   }
+ 
   
-  public void PrintByTitle(String title){
-      if(Elist.Empty())
-          System.out.println("List is empty!");
-      else{
-      Elist.FindFirst();
-      while(!Elist.Last()){
-          if(Elist.Retrive().Title.equals(title))
-              System.out.println (Elist.Retrive().toString());
-          Elist.FindNext();
-      }
-      if(Elist.Retrive().Title.equals(title))
-              System.out.println (Elist.Retrive().toString());
-      }
-      
-  }
   
-  public void PrintByContactName(String name){
+  public LinkedList<Event> SearchByEventTitle(String title){
+     LinkedList<Event> l=new LinkedList<Event>();
+     if(Elist.Empty())
+         return l;
+     Elist.FindFirst();
+     while(!Elist.Last()){
+         if(( (Event) Elist.Retrive()).getTitle().equals(title))
+             l.Insert(Elist.Retrive());
+         
+         Elist.FindNext();   
+     }
+      if(( (Event) Elist.Retrive()).getTitle().equals(title))
+             l.Insert(Elist.Retrive());
+      
+      return l;  
+ }  
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-  }
+   
       
   public void PrintInOrder(){
      if(Elist.Empty())
@@ -463,65 +491,6 @@ list.FindNext();
      }
   }
                  
-      
-      
-      
-      
-      
-      
-   /* if(Elist.Empty())
-          System.out.println("List is empty!");
-      else{
-          
-      Elist.FindFirst();
-      while(!Elist.Last()){
-          if(Elist.Retrive().contact.ContactName.equals(name))
-             System.out.println (Elist.Retrive().toString());
-          Elist.FindNext();
-      }
-      
-      if(Elist.Retrive().contact.ContactName.equals(name))
-             System.out.println (Elist.Retrive().toString());
-      }    
-  */
-      
-      
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
- 
- 
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
