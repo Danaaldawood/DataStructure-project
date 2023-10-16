@@ -66,12 +66,13 @@ public class LinkedList <T> {
            public void AddSortContact(T x){
                Node<T> p=new Node<T>(x);
              if(Head==null){
-                 Head=p;
+                 Head=current=p;
                  return;}
              
              if(((Contact)x).CompareTo(((Contact)Head.data).ContactName)<0){
                  p.next=Head;
                  Head=p;
+                 current=p;
                  return;}
              
              Node<T> temp=Head;
@@ -83,19 +84,20 @@ public class LinkedList <T> {
              }
              pre.next=p;
              p.next=temp;  
-               
+             current=p;  
            }
            
            
           public void AddSortEvent(T x){
-               Node<T> p=new Node<T>(x);
+               Node<T> p=new Node<T>(x); 
              if(Head==null){
-                 Head=p;
+                 Head=current=p;
                  return;}
              
              if(((Event)x).CompareTo(((Event)Head.data).Title)<0){
                  p.next=Head;
                  Head=p;
+                 current=p;
                  return;}
              
              Node<T> temp=Head;
@@ -106,10 +108,14 @@ public class LinkedList <T> {
                         
              }
              pre.next=p;
-             p.next=temp;  
+             p.next=temp; 
+             current=p;
                
            } 
            
              
 }    
+            
+	         
+	    
             
