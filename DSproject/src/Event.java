@@ -32,24 +32,16 @@ public Contact contact;
            return Title.compareTo(c);
            }  
 
+    public String getTitle() {
+        return Title;
+    }
 
+   
 
 
 
 }
 
-
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
