@@ -71,7 +71,9 @@ public class Contact implements Comparable<String>{
 	    public void setNotes(String notes) { 
 	        this.notes = notes; 
 	    } 
-            
+            public LinkedList<Event> getEvent(){
+                return ListEvent;
+            }
             public int CompareTo(String c){
             
            return ContactName.compareTo(ContactName);
