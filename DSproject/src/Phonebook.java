@@ -12,7 +12,7 @@ public static LinkedList<Event> Elist;
      Phonebook ph=new Phonebook();
      list=new LinkedList<Contact>();
      Elist=new LinkedList<Event>();
-     int ch=0;  String str; Contact contact;
+     int ch=0;  String str; Contact contact;  LinkedList<Contact> l;
      do{
        System.out.println("Please choose an option:") ;
        System.out.println("1. Add a contact");
@@ -67,7 +67,7 @@ public static LinkedList<Event> Elist;
               s=read.nextInt();
               
              
-              LinkedList<Contact> l;
+             
               switch(s){
                   
                   case 1:
@@ -166,6 +166,20 @@ public static LinkedList<Event> Elist;
                if(contact==null)
                    System.out.println("contact not found!");
                if(contact!=null){
+                  if(!ph.Elist.Empty()){
+                      ph.Elist.FindFirst();
+                      while(!ph.Elist.Last()){
+                        if(ph.Elist.Retrive().contact.ContactName.equals(contact.ContactName)) 
+                            ph.Elist.Remove();
+                        else
+                            ph.Elist.FindNext();
+                        
+                  }
+                   if(ph.Elist.Retrive().contact.ContactName.equals(contact.ContactName)) 
+                        ph.Elist.Remove();  
+                      
+                  }
+           
                    ph.DeleteContact(contact);
                }
               break;
@@ -414,7 +428,7 @@ list.FindNext();
        
         list.FindFirst();
         while(!list.Last()){
-            if(!list.Retrive().equals(c))
+            if(!  list.Retrive().ContactName.equals(c.ContactName)        )
                 list.FindNext();
         }
         list.Remove();
@@ -518,6 +532,16 @@ list.FindNext();
  
  
  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
