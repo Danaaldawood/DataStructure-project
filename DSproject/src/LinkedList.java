@@ -36,86 +36,87 @@ public class LinkedList <T> {
 	    
 	    	Node<T> tmp;
 	    	if (Head==null) {
-	    		current = Head = new Node<T> (d);
+	    	     current = Head = new Node<T> (d);
 	    	}
 	    	else {
-	    		tmp = current.next;
-	    		current.next = new Node<T> (d);
-	    		current = current.next;
-	    		current.next = tmp;
+	    	     tmp = current.next;
+	    	     current.next = new Node<T> (d);
+	    	     current = current.next;
+	    	     current.next = tmp;
 	    	}
 	    }
 	    
 	   public void Remove () {
 	    		
-	    		if (current == Head) {
-	    			Head = Head.next;
+	    	if (current == Head) {
+	    	     Head = Head.next;
 	    		}
-	    		else {
-	    			Node<T> tmp = Head;
-	    			while (tmp.next != current)
-	    				tmp = tmp.next;
-	    			tmp.next = current.next;
+	    	else {
+	    	     Node<T> tmp = Head;
+	    	     while (tmp.next != current)
+	    		tmp = tmp.next;
+	    	     tmp.next = current.next;
 	    		}
-	    		if (current.next == null)
-	    			current = Head;
-	    		else
-	    			current = current.next;
+	    	if (current.next == null)
+	    	    current = Head;
+	    	else
+	    	    current = current.next;
 	    	}
-	      
+//method AddSortContact recieve x of type T and meke a Node of contact to add it in the List this method will compare this contact Node with the other in the list to add it in suitable arrangment depending on the contact name.	      
            public void AddSortContact(T x){
-               Node<T> p=new Node<T>(x);
-             if(Head==null){
-                 Head=current=p;
-                 return;}
+                Node<T> p=new Node<T>(x);
+                if(Head==null){
+                   Head=current=p;
+                   return;}
+              
+               if(((Contact)x).CompareTo(((Contact)Head.data).ContactName)<0){
+                     p.next=Head;
+                     Head=p;
+                     current=p;
+                     return;}
              
-             if(((Contact)x).CompareTo(((Contact)Head.data).ContactName)<0){
-                 p.next=Head;
-                 Head=p;
-                 current=p;
-                 return;}
-             
-             Node<T> temp=Head;
-             Node<T> pre=null;
-             while(temp!=null){
-                 if(((Contact)temp.data).CompareTo(((Contact)x).ContactName)<=0)
-                     pre=temp;  temp=temp.next;
+                Node<T> temp=Head;
+                Node<T> pre=null;
+                while(temp!=null){
+                    if(((Contact)temp.data).CompareTo(((Contact)x).ContactName)<=0)
+                         pre=temp;  temp=temp.next;
                         
              }
-             pre.next=p;
-             p.next=temp;  
-             current=p;  
+                pre.next=p;
+                p.next=temp;  
+                current=p;  
            }
            
-           
+//method AddSortEvent recieve x of type T and meke a Node of Event to add it in the List this method will compare this Event Node with the other in the list to add it in suitable arrangment depending on the Title.           
           public void AddSortEvent(T x){
-               Node<T> p=new Node<T>(x); 
-             if(Head==null){
-                 Head=current=p;
-                 return;}
+                Node<T> p=new Node<T>(x); 
+                if(Head==null){
+                    Head=current=p;
+                    return;}
              
-             if(((Event)x).CompareTo(((Event)Head.data).Title)<0){
-                 p.next=Head;
-                 Head=p;
-                 current=p;
-                 return;}
+                 if(((Event)x).CompareTo(((Event)Head.data).Title)<0){
+                     p.next=Head;
+                     Head=p;
+                     current=p;
+                     return;}
              
-             Node<T> temp=Head;
-             Node<T> pre=null;
-             while(temp!=null){
-                 if(((Event)temp.data).CompareTo(((Event)x).Title)<=0)
+                 Node<T> temp=Head;
+                 Node<T> pre=null;
+                 while(temp!=null){
+                     if(((Event)temp.data).CompareTo(((Event)x).Title)<=0)
                      pre=temp;  temp=temp.next;
                         
              }
-             pre.next=p;
-             p.next=temp; 
-             current=p;
+                 pre.next=p;
+                 p.next=temp; 
+                 current=p;
                
            } 
            
              
 }    
             
+	         
 	         
 	    
 	    
