@@ -490,22 +490,14 @@ public class Phonebook {
          if(Elist.Empty())
              System.out.println("List is empty!");
          else{
-             int i=0;
              Elist.FindFirst();
              while(!Elist.Last()){
-                 i++;
-                 Elist.FindNext();
-        }
-             i++;
-             Elist.FindFirst();
-             for(int j=0;j<i;j++){
                  System.out.println(Elist.Retrive().toString());
                  Elist.FindNext();
+             }
+             System.out.println(Elist.Retrive().toString());
+             
         }
-        
-        
-        
-     }
   }
                  
       
