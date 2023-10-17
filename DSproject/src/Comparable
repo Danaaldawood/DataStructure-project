@@ -1,6 +1,8 @@
 package phonebook;
 
  interface Comparable<String> {
- public int CompareTo(String x);
+ 
+         public int CompareTo(String x);
        
 }
+
