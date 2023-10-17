@@ -10,6 +10,8 @@ public static LinkedList<Event> Elist;
     public static void main(String[] args) {
      System.out.println("Welcome to the Linked Tree Phonebook!");
      Phonebook ph=new Phonebook();
+     list=new LinkedList<Contact>();
+     Elist=new LinkedList<Event>();
      int ch=0;  String str; Contact contact;
      do{
        System.out.println("Please choose an option:") ;
@@ -30,19 +32,19 @@ public static LinkedList<Event> Elist;
                read.nextLine();
                String name=read.nextLine();
                System.out.print("Enter the contact's phone number:");
-               read.nextLine();
+              
                String phoneNumber=read.nextLine();
                System.out.print("Enter the contact's email address:");
-               read.nextLine();
+               
                String email=read.nextLine();
                System.out.print("Enter the contact's address: ");
-               read.nextLine();
+               
                String address=read.nextLine();
                System.out.print("Enter the contact's birthday: ");
-               read.nextLine();
+               
                String birthday=read.nextLine();
                System.out.print("Enter any notes for the contact: ");
-               read.nextLine();
+               
                String note=read.nextLine();
                
            
@@ -51,6 +53,7 @@ public static LinkedList<Event> Elist;
               break;
               
            case 2:
+             
               int s=0;
               System.out.println("Enter search criteria:");
               System.out.println("1. Name");
@@ -160,32 +163,28 @@ public static LinkedList<Event> Elist;
                read.nextLine();
                str=read.nextLine();
                contact=ph.SearchName(str);
+               if(contact==null)
+                   System.out.println("contact not found!");
                if(contact!=null){
                    ph.DeleteContact(contact);
                }
               break;
               
-              
-              
-              
-              
-              
-              
-              
+      
            case 4:
                System.out.print("Enter event title:");
                read.nextLine();
                String title=read.nextLine();
-               System.out.println("Enter contact name:");
-               read.nextLine();
+               System.out.print("Enter contact name:");
+               
                String contactname=read.nextLine();
-               System.out.println("Enter event date and time (MM/DD/YYYY HH:MM):");
-               read.nextLine();
+               System.out.print("Enter event date and time (MM/DD/YYYY HH:MM):");
+               
                String dateTime=read.nextLine();
                String date=dateTime.substring(0,dateTime.indexOf(' '));
                String time=dateTime.substring(dateTime.indexOf(' '));        
-               System.out.println("Enter event location:");
-               read.nextLine();
+               System.out.print("Enter event location:");
+               
                String loc=read.nextLine();
                 contact= ph.SearchName(contactname);
                      if(contact==null){
@@ -193,10 +192,9 @@ public static LinkedList<Event> Elist;
                      }
                      else{
                        Event event=new Event(title,date,time,loc,contact);  
-                       ph.Elist.AddSortEvent(event);
-
-                      if( contact.addEvent(Elist.Retrive()))
-                          System.out.println("Event scheduled successfully!");
+                      if( contact.addEvent(event)){
+                          ph.Elist.AddSortEvent(event);
+                          System.out.println("Event scheduled successfully!");}
                       else
                            System.out.println("Event scheduled Unsuccessfully!");
                      }   
@@ -204,13 +202,15 @@ public static LinkedList<Event> Elist;
             break;
             
            case 5:
+               read.nextLine();
                System.out.println("Enter search criteria:");
                System.out.println("1. contact name");
                System.out.println("2. Event tittle");
                System.out.println();
                System.out.print("Enter your choice:");
+               
 
-               int i=0;
+               int i=read.nextInt();
                switch(i)
                {
                    case 1:
@@ -269,9 +269,11 @@ public static LinkedList<Event> Elist;
               break;
               
            case 7:
+              read.nextLine();
               ph.PrintInOrder();
               break;
       
+              
        }//end switch   
      }while(ch!=8);
         
@@ -295,6 +297,7 @@ public static LinkedList<Event> Elist;
     
     public void Insert(Contact x){
      boolean flag=false;
+     if(!list.Empty()){
     list.FindFirst();
    while(!list.Last()){
       
@@ -307,7 +310,7 @@ list.FindNext();
    
    if (list.Retrive() .getContactName().equals(x.getContactName())||list.Retrive().getPhoneNumber().equals(x.getPhoneNumber())) {
      flag=true; 
-    }
+    } }
    
    if(flag==false){
     list.AddSortContact(x);
@@ -404,13 +407,14 @@ list.FindNext();
   
   public void DeleteContact(Contact c){
       if(list.Empty()){
-       System.out.println("list is Empty!");
+         System.out.println("list is empty!");
+          
       }
       else{
-        c.RemoveEvents();
+       
         list.FindFirst();
         while(!list.Last()){
-            if(list.Retrive()!=c)
+            if(!list.Retrive().equals(c))
                 list.FindNext();
         }
         list.Remove();
@@ -480,8 +484,8 @@ list.FindNext();
             Elist.FindNext();
         }
         i++;
+        Elist.FindFirst();
         for(int j=0;j<i;j++){
-            Elist.FindFirst();
             System.out.println(Elist.Retrive().toString());
             Elist.FindNext();
         }
@@ -491,6 +495,51 @@ list.FindNext();
      }
   }
                  
+      
+      
+      
+      
+      
+      
+  
+      
+      
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+ 
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
