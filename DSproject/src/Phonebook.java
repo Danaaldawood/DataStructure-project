@@ -421,21 +421,27 @@ public class Phonebook {
   
  //method  DeleteContact recieve Contact c and search from the list for a contact with contact name same as c contact name then delete it.
      public void DeleteContact(Contact c){
-         if(list.Empty()){
-             System.out.println("list is empty!");
-          
-      }
-         else{
-       
+         if (list.Empty()) {
+             System.out.println("List is empty!");
+       } else {
              list.FindFirst();
-             while(!list.Last()){
-                 if(!  list.Retrive().ContactName.equals(c.ContactName)        )
-                     list.FindNext();
-        }
-             list.Remove();
-             System.out.println("Contact deleted successfully!");  
-      }     
+             while (!list.Last()) {
+                 if (list.Retrive().ContactName.equals(c.ContactName)) {
+                     list.Remove();
+                     System.out.println("Contact deleted successfully!");
+                     return; // Exit the method after deleting the contact
+      }
+                 list.FindNext();
+    }
+             if (list.Retrive().ContactName.equals(c.ContactName)) {
+                 list.Remove();
+                 System.out.println("Contact deleted successfully!");
+    }        else {
+                 System.out.println("Contact not found!");
+    }
   }
+} 
+  
   
   //method PrintFirstName recieve String name that is the first name and make a list contain all contacts from the list that have first contact name equal to it then print the list.
      public void PrintFirstName(String name){
@@ -498,7 +504,11 @@ public class Phonebook {
              System.out.println(Elist.Retrive().toString());
              
         }
-  }
+        
+        
+        
+     }
+  
                  
       
       
@@ -523,6 +533,8 @@ public class Phonebook {
  
  
  
+    
+    
     
     
     
