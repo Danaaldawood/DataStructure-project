@@ -1,37 +1,34 @@
 package phonebook;
 
 
-
-
 public class Node <T>{
-    public T data; 
-    public Node <T> next;
+         public T data; 
+         public Node <T> next;
 	
 	
 	public Node (T d) {
-		
-		data = d ;
-	    next = null;
+	     data = d ;
+	     next = null;
 	}
 
 
 	public T getData() {
-		return data;
+             return data;
 	}
 
 
 	public void setData(T data) {
-		this.data = data;
+	     this.data = data;
 	}
 
 
 	public Node<T> getNext() {
-		return next;
+	     return next;
 	}
 
 
 	public void setNext(Node<T> next) {
-		this.next = next;
+	     this.next = next;
 	}
 	
 	
